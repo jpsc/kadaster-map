@@ -6,4 +6,5 @@ Minimal reproduction of different map layers for funda website
 
 - `npm install`
 - `npm run dev`
+- http://localhost:8080
 - Profit 💰
