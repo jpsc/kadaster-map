@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> preview</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<script>(function(window,document){'use strict';if('querySelector'in document&&'addEventListener'in window){var htmlClasses=' js';document.documentElement.className+=htmlClasses;setCookie('html-classes',htmlClasses)}function setCookie(name,value,days){if(typeof useCookie==='undefined'){if(value===false){days=-1}var expires;if(days){var date=new Date();date.setTime(date.getTime()+days*24*60*60*1000);expires='; expires='+date.toGMTString()}else{expires=''}document.cookie=name+'='+value+expires+'; path=/'}}})(window,window.document);
+</script>
+
+        <link rel="stylesheet" href="https://assets.fstatic.nl/master_3305/assets/index-fundawonen.css">
+
+    <style type="text/css">
+.debug-component {
+  position: relative;
+	outline: 2px solid black;
+	outline-offset: -2px;
+}
+
+.debug-label {
+	display: none !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	color: white !important;
+	padding: .2em .5em;
+	background: black;
+}
+
+.debug-component .debug-label {
+	display: block !important;
+}
+</style>
+
+
+</head>
+
+
+<body data-module="object-map">
+
+<div class="app-guide-example" data-guide-title="Object Detail map">
+
+    <!-- object-map component -->
+    <section class="object-map" data-component="object-map" data-object-map="object-map">
+        <div class="object-map__container">
+
+    <div class="object-map-canvas" data-object-map-canvas>
+            <script type="application/json" data-object-map-config>
+                {
+                    "lat": 52.3769828,
+                    "lng": 4.9188269,
+                    "markerTitle": "Landweg 18 op kaart",
+                    "markerUrl": "/marker.png",
+                    "defaultMapType": "cadastral",
+                    "kadasterBgUrl": "//geodata.nationaalgeoregister.nl/tiles/service/wmts/brtachtergrondkaart/EPSG:3857/{zoom}/{x}/{y}.png",
+                    "kadasterPandenUrl": "//geodata.nationaalgeoregister.nl/bag/wms/v1_1?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=TRUE&LAYERS=pand&WIDTH=256&HEIGHT=256&CRS=CRS:84&BBOX={bbox}",
+                    "kadasterPercelenUrl": "//geodata.nationaalgeoregister.nl/kadastralekaart/wms/v4_0?service=WMS&version=1.3.0&request=GetMap&LAYERS=perceel,bebouwing&FORMAT=image/png&WIDTH=256&HEIGHT=256&CRS=CRS:84&TRANSPARENT=TRUE&BBOX={bbox}",
+                    "kadasterAttributionText": "Map data Kadaster CC-BY 4.0"
+                }
+            </script><noscript>
+
+    <img alt="Landweg 18 op kaart"
+         src="https://maps.googleapis.com/maps/api/staticmap?center=52.3769828,4.9188269&markers=anchor:30,54|icon:https://localhost:3000/assets/components/object-map/marker-small.png&zoom=14&size=500x192&scale=2&style=feature:poi|visibility:off"
+         class="object-map-static">
+
+        </noscript>
+    </div>
+
+
+            <div class="object-map-type-select-container">
+
+    <div class="object-map-type-select" data-object-map-type-select="object-map" data-component="object-map-type-select">
+        <button class="dropdown-toggle" data-menu-toggle>
+            <span class="dropdown-title" data-menu-title>Kaart</span>
+            <span class="icon-arrow-down-blue" style="font-size: 2rem">&ddarr;</span>
+        </button>
+
+        <ul class="dropdown-menu">
+
+                <li class="object-map-type-select-item-roadmap">
+                    <input class="object-map-type-select-radio" id="object-map-type-roadmap" type="radio" value="roadmap" name="object-map-type-control" data-object-map-type-select-radio>
+                    <label class="object-map-type-select-label" for="object-map-type-roadmap">Kaart</label>
+                </li>
+
+                <li class="object-map-type-select-item-satellite">
+                    <input class="object-map-type-select-radio" id="object-map-type-satellite" type="radio" value="satellite" name="object-map-type-control" data-object-map-type-select-radio >
+                    <label class="object-map-type-select-label" for="object-map-type-satellite">Satelliet</label>
+                </li>
+
+                <li class="object-map-type-select-item-cadastral">
+                    <input class="object-map-type-select-radio" id="object-map-type-cadastral" type="radio" value="cadastral" name="object-map-type-control" data-object-map-type-select-radio checked>
+                    <label class="object-map-type-select-label" for="object-map-type-cadastral">Kadastraal</label>
+                </li>
+
+                <li class="object-map-type-select-item-street_view">
+                    <input class="object-map-type-select-radio" id="object-map-type-street_view" type="radio" value="street_view" name="object-map-type-control" data-object-map-type-select-radio >
+                    <label class="object-map-type-select-label" for="object-map-type-street_view">Street View</label>
+                </li>
+
+        </ul>
+    </div>
+
+            </div>
+
+
+    <div class="object-map-zoom-controls" data-object-map-zoom-controls="object-map" data-component="object-map-zoom-controls">
+        <button class="object-map-zoom-control__button object-map-zoom-control__button--plus" data-object-map-zoom-controls-in>
+            +
+        </button>
+
+        <button class="object-map-zoom-control__button object-map-zoom-control__button--minus" data-object-map-zoom-controls-out>
+            -
+        </button>
+    </div>
+
+
+    <div class="object-map-legend" data-object-map-legend data-object-map-kadaster-legend>
+        <span class="object-map__legend-item object-map__legend-item--black">Kadastrale grens</span>
+        <span class="object-map__legend-item object-map__legend-item--red">Bebouwing</span>
+    </div>
+
+
+    <div class="object-map-legend" data-object-map-legend data-object-map-nwn-legend>
+        <span class="object-map__legend-item object-map__legend-item--unavailable">Verkocht</span>
+        <span class="object-map__legend-item object-map__legend-item--negotiation">In onderhandeling</span>
+        <span class="object-map__legend-item object-map__legend-item--available">Beschikbaar</span>
+    </div>
+
+        </div>
+
+    </section>
+    <!-- /object-map component -->
+
+</div>
+
+    <style>
+        .app-guide-example:before {
+            content: "Example: " attr(data-guide-title);
+            display: block;
+            background: #F3F5F5;
+            padding: 10px;
+            clear: both;
+        }
+    </style>
+
+    <script>
+
+        [
+            './dist/index.js'
+        ].forEach(function(url) {
+            var script = document.createElement('script');
+            script.src = url;
+            script.async = true;
+            document.head.appendChild(script);
+        });
+    </script>
+
+
+</body>
+</html>
