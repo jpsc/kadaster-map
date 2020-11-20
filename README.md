@@ -1,6 +1,6 @@
-# Extracted funda map
+# Extracted map
 
-Minimal reproduction of different map layers for funda website
+Minimal reproduction of different map layers
 
 **Steps**:
 
