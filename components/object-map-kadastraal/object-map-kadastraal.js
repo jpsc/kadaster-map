@@ -11,16 +11,11 @@ export default class ObjectMapKadastraal {
         this.config = config;
 
         this.map.mapTypes.set(
-            'kadastraal',
-            ObjectMapKadastraal.getKadasterBaseLayer(this.config.kadasterBgUrl)
+            'roadmap',
+            this.map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
         );
-        this.pandenLayer = ObjectMapKadastraal.getKadasterLayer(
-            this.map,
-            this.config.kadasterPandenUrl
-        );
-        this.percelenLayer = ObjectMapKadastraal.getKadasterLayer(
-            this.map,
-            this.config.kadasterPercelenUrl
+        this.pandenpercelenLayer = ObjectMapKadastraal.getMapTilerLayer (
+            this.config.mapTilerUrl
         );
     }
 
@@ -42,9 +37,8 @@ export default class ObjectMapKadastraal {
             }
         }
 
-        this.map.overlayMapTypes.push(this.pandenLayer);
-        this.map.overlayMapTypes.push(this.percelenLayer);
-        this.map.setMapTypeId('kadastraal');
+        this.map.overlayMapTypes.push(this.pandenpercelenLayer);
+        this.map.setMapTypeId('roadmap');
 
         $(window).trigger(this.SHOW_LEGEND_EVENT + '-' + location, {
             legendSelector: this.KADASTER_LEGEND_SELECTOR,
@@ -63,50 +57,17 @@ export default class ObjectMapKadastraal {
         );
     }
 
-    static getKadasterBaseLayer(url) {
+    static getMapTilerLayer(url) {
         return new google.maps.ImageMapType({
             getTileUrl: function(coord, zoom) {
-                var temp = url.replace('{zoom}', zoom);
-                temp = temp.replace('{x}', coord.x);
-                temp = temp.replace('{y}', coord.y);
-                return temp;
+                var resolvedUrl = url
+                  .replace('{x}', coord.x)
+                  .replace('{y}', coord.y)
+                  .replace('{z}', zoom);
+                return resolvedUrl;
             },
             tileSize: new google.maps.Size(256, 256),
-            maxZoom: 21,
-            minZoom: 17,
-            name: 'Kadastrale Base Layer',
-        });
-    }
-
-    static getKadasterLayer(map, url) {
-        return new google.maps.ImageMapType({
-            getTileUrl: function(coord, zoom) {
-                const zfactor = Math.pow(2, zoom);
-                const projection = map.getProjection();
-                const top = projection.fromPointToLatLng(
-                    new google.maps.Point(
-                        (coord.x * 256) / zfactor,
-                        (coord.y * 256) / zfactor
-                    )
-                );
-                const bot = projection.fromPointToLatLng(
-                    new google.maps.Point(
-                        ((coord.x + 1) * 256) / zfactor,
-                        ((coord.y + 1) * 256) / zfactor
-                    )
-                );
-                const bbox =
-                    top.lng() +
-                    ',' +
-                    bot.lat() +
-                    ',' +
-                    bot.lng() +
-                    ',' +
-                    top.lat();
-                return url.replace('{bbox}', bbox);
-            },
-            tileSize: new google.maps.Size(256, 256),
-            name: 'Bebouwing',
+            name: 'Kadastrale kaart',
             maxZoom: 21,
             minZoom: 17,
         });
