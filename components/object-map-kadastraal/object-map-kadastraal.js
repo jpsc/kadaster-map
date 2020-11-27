@@ -11,8 +11,8 @@ export default class ObjectMapKadastraal {
         this.config = config;
 
         this.map.mapTypes.set(
-            'kadastraal',
-            ObjectMapKadastraal.getKadasterBaseLayer(this.config.kadasterBgUrl)
+            'roadmap',
+            this.map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
         );
         this.pandenLayer = ObjectMapKadastraal.getKadasterLayer(
             this.map,
@@ -44,7 +44,7 @@ export default class ObjectMapKadastraal {
 
         this.map.overlayMapTypes.push(this.pandenLayer);
         this.map.overlayMapTypes.push(this.percelenLayer);
-        this.map.setMapTypeId('kadastraal');
+        this.map.setMapTypeId('roadmap');
 
         $(window).trigger(this.SHOW_LEGEND_EVENT + '-' + location, {
             legendSelector: this.KADASTER_LEGEND_SELECTOR,
