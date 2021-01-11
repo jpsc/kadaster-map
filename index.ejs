@@ -60,7 +60,7 @@
                     "markerTitle": "Landweg 18 op kaart",
                     "markerUrl": "/marker.png",
                     "defaultMapType": "cadastral",
-                    "mapTilerUrl": "https://api.maptiler.com/maps/c67c57af-5092-467d-bf81-513c0438ecb2/256/{z}/{x}/{y}.png?key=BrAJoIaS66eahLFykljd",
+                    "mapTilerUrl": "https://api.maptiler.com/maps/<%=  process.env.MT_MAP_ID %>/256/{z}/{x}/{y}.webp?key=<%= process.env.MT_API_KEY %>",
                     "kadasterBgUrl": "//geodata.nationaalgeoregister.nl/tiles/service/wmts/brtachtergrondkaart/EPSG:3857/{zoom}/{x}/{y}.png",
                     "kadasterPandenUrl": "//geodata.nationaalgeoregister.nl/bag/wms/v1_1?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=TRUE&LAYERS=pand&WIDTH=256&HEIGHT=256&CRS=CRS:84&BBOX={bbox}",
                     "kadasterPercelenUrl": "//geodata.nationaalgeoregister.nl/kadastralekaart/wms/v4_0?service=WMS&version=1.3.0&request=GetMap&LAYERS=perceel,bebouwing&FORMAT=image/png&WIDTH=256&HEIGHT=256&CRS=CRS:84&TRANSPARENT=TRUE&BBOX={bbox}",
@@ -155,7 +155,7 @@
     <script>
 
         [
-            './dist/index.js'
+            './index.js'
         ].forEach(function(url) {
             var script = document.createElement('script');
             script.src = url;

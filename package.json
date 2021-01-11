@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "http-server & webpack -w"
+    "dev": "http-server ./dist & webpack -w"
   },
   "author": "jpsc",
   "devDependencies": {
+    "copy-webpack-plugin": "^6.2.1",
+    "dotenv-webpack": "^6.0.0",
+    "html-webpack-plugin": "^4.5.1",
     "http-server": "^0.12.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
